@@ -1,5 +1,6 @@
 package com.epam.rd.todolist;
 
+import com.epam.rd.todolist.injection.TodoListAppInjector;
 import com.epam.rd.todolist.spark.SparkConfig;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -17,7 +18,7 @@ public class App
     public static void main( String[] args )
     {
         logger.info("Starting application");
-        Injector injector = Guice.createInjector();
+        Injector injector = Guice.createInjector(new TodoListAppInjector());
 
         SparkConfig spark = injector.getInstance(SparkConfig.class);
 
