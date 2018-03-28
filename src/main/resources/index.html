@@ -11,6 +11,8 @@
     <title>Hello, world!</title>
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css"
+          integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
 </head>
 <body>
 
@@ -34,19 +36,11 @@
                 <div class="todo-item-options">
                     <label for="checkbox-1" class="checkbox-container">
                         <input id="checkbox-1" type="checkbox" class="checkbox-custom">
-                        <span class="checkmark"></span>
+                        <span class="checkmark"><i class="fas fa-check-circle text-success"></i></span>
                     </label>
-                    <button class="delete-item"  data-toggle="modal" data-target="#exampleModal"></button>
-                </div>
-            </div>
-            <div class="todo-item">
-                <input class="todo-item-text bg-light" value="second task">
-                <div class="todo-item-options">
-                    <label for="checkbox-2" class="checkbox-container">
-                        <input id="checkbox-2" type="checkbox" class="checkbox-custom">
-                        <span class="checkmark"></span>
-                    </label>
-                    <button class="delete-item"  data-toggle="modal" data-target="#exampleModal"></button>
+                    <button class="delete-item" data-toggle="modal" data-target="#exampleModal">
+                        <i class="fas fa-trash-alt text-danger"></i>
+                    </button>
                 </div>
             </div>
 

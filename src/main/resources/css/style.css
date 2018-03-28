@@ -44,26 +44,23 @@
     width: 100px;
     display: flex;
     align-items: center;
+    font-size: 32px;
 }
 
 .delete-item {
-    height: 40px;
-    width: 40px;
-    background: url("../img/delete.png") top center no-repeat;
-    background-size: contain;
+    display: inline-block;
     border: none;
+    background: none;
     margin-left: 7px;
     cursor: pointer;
 }
 .delete-item:focus {
     outline: none;
 }
-/*checkbox style*/
 
+/*checkbox style*/
 /* Customize the label (the container) */
 .checkbox-container {
-    width: 40px;
-    height: 40px;
     margin: 0;
     cursor: pointer;
     position: relative;
@@ -73,36 +70,16 @@
 .checkbox-container input {
     position: absolute;
     opacity: 0;
-
 }
 
 /* Create a custom checkbox */
 .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background: url("../img/checked.png") center no-repeat;
-    background-size: contain;
     opacity: 0.3;
 }
 
 /* When the checkbox is checked, add a blue background */
 .checkbox-container input:checked ~ .checkmark {
     opacity: 1;
-}
-
-/* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-}
-
-/* Show the checkmark when checked */
-.checkbox-container input:checked ~ .checkmark:after {
-    display: block;
 }
 
 /*checkbox style end*/
