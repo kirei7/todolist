@@ -27,6 +27,11 @@ public class TodoNoteDaoInMemory implements TodoNoteDao {
     }
 
     @Override
+    public TodoNote findById(Long id) {
+        return notes.get(id);
+    }
+
+    @Override
     public TodoNote save(TodoNote note) {
         if (note.id == null)
             note.id = counter.incrementAndGet();

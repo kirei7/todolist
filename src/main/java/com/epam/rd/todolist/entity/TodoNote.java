@@ -5,7 +5,7 @@ import java.util.Objects;
 public class TodoNote {
     public Long id;
     public String text;
-    public Boolean isDone;
+    public Boolean isDone = false;
 
     public TodoNote(){}
     public TodoNote(String text){

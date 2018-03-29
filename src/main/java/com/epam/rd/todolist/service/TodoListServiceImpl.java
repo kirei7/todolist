@@ -28,6 +28,17 @@ public class TodoListServiceImpl implements TodoListService{
     }
 
     @Override
+    public TodoNote findById(Long id) {
+        return dao.findById(id);
+    }
+
+    @Override
+    public TodoNote changeStatus(TodoNote note) {
+        note.isDone = !note.isDone;
+        return dao.save(note);
+    }
+
+    @Override
     public TodoNote save(TodoNote note) {
         return dao.save(note);
     }
