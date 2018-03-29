@@ -13,41 +13,33 @@ import static java.util.stream.Collectors.toList;
 public class TodoNoteDaoInMemory implements TodoNoteDao {
 
     private AtomicLong counter = new AtomicLong();
-    private Map<Long, String> notes = new ConcurrentHashMap<>();
+    private Map<Long, TodoNote> notes = new ConcurrentHashMap<>();
 
     public TodoNoteDaoInMemory() {
-        notes.put(counter.incrementAndGet(), "Refactor this crap");
-        notes.put(counter.incrementAndGet(), "Do not forget that this is in-memory storage");
-        notes.put(counter.incrementAndGet(), "Another useful reminder");
+        notes.put(counter.incrementAndGet(), new TodoNote(counter.get(), "Refactor this crap"));
+        notes.put(counter.incrementAndGet(), new TodoNote(counter.get(), "Do not forget that this is in-memory storage"));
+        notes.put(counter.incrementAndGet(), new TodoNote(counter.get(), "Another useful reminder"));
     }
 
     @Override
     public List<TodoNote> findAll() {
-        return notes.entrySet().stream().map(e -> new TodoNote(e.getKey(), e.getValue())).collect(toList());
+        return notes.entrySet().stream().map(e -> e.getValue()).collect(toList());
     }
 
     @Override
     public TodoNote save(TodoNote note) {
         if (note.id == null)
             note.id = counter.incrementAndGet();
-        notes.put(note.id, note.text);
+        notes.put(note.id, note);
         return note;
     }
 
     @Override
     public TodoNote remove(TodoNote note) {
-        String text = notes.remove(note.id);
-        if (text == null)
-            return null;
-        else
-        return new TodoNote(note.id, text);
+        return notes.remove(note.id);
     }
 
     private TodoNote getById(Long id) {
-        String text = notes.get(id);
-        if (text == null)
-            return null;
-        else
-            return new TodoNote(id, text);
+        return notes.get(id);
     }
 }
