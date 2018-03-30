@@ -37,6 +37,9 @@ public class ApiController {
         post(NOTES_PATH,
                 (req, res) -> service.save(mapper.readValue(req.body(), TodoNote.class)), mapper::writeValueAsString);
 
+        put(NOTES_PATH,
+                (req, res) -> service.save(mapper.readValue(req.body(), TodoNote.class)), mapper::writeValueAsString);
+
         post(NOTES_PATH + "/:id",
                 (req, res) -> {
                     TodoNote note = service.findById(new Long(req.params(":id")));
