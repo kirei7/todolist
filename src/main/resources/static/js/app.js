@@ -59,6 +59,8 @@ function initTaskDelete() {
 }
 
 function initTaskChangeStatus() {
+    let noteText;
+
     $(".list-wrapper").on("change", ".checkbox-custom", function () {
         let id = $(this).attr("data-id");
         $.ajax({
@@ -66,6 +68,27 @@ function initTaskChangeStatus() {
             type: 'POST',
             success: function (res) {
                 console.log(res);
+            }
+        });
+    });
+    $(".list-wrapper").on("focus", ".todo-item-text", function () {
+        noteText = $(this).val();
+    });
+    $(".list-wrapper").on("focusout", ".todo-item-text", function () {
+        let text = $(this).val();
+        if (text === noteText) return;
+        let parent = $(this).parents(".todo-item");
+        let id = parent.attr("data-id");
+        let isChecked = parent.find(".checkbox-custom").prop("checked");
+        let data = {id: id, text: text, isDone: isChecked};
+        $.ajax({
+            url: NOTES_PATH,
+            type: 'PUT',
+            data: JSON.stringify(data),
+            contentType: "application/json",
+            dataType: "json",
+            complete: function () {
+                //do nothing
             }
         });
     });
